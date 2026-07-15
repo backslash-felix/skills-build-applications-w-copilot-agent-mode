@@ -6,13 +6,10 @@ import activitiesRouter from './routes/activities';
 import leaderboardRouter from './routes/leaderboard';
 import workoutsRouter from './routes/workouts';
 
+import { baseUrl } from './server';
+
 const app = express();
 const PORT = 8000;
-
-const codespaceName = process.env.CODESPACE_NAME;
-const baseUrl = codespaceName
-  ? `https://${codespaceName}-${PORT}.app.github.dev`
-  : `http://localhost:${PORT}`;
 
 app.use(express.json());
 
