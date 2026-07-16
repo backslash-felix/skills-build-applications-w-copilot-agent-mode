@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 const codespaceName = import.meta.env.VITE_CODESPACE_NAME
 const API_BASE = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
-  : 'http://localhost:8000'
+  ? `https://${codespaceName}-8000.app.github.dev/users/`
+  : 'http://localhost:8000/users/'
 
 export default function Users() {
   const [users, setUsers] = useState([])
@@ -11,7 +11,7 @@ export default function Users() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`${API_BASE}/users/`)
+    fetch(`${API_BASE}`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()
