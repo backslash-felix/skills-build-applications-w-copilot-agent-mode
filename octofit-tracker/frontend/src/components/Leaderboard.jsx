@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 const codespaceName = import.meta.env.VITE_CODESPACE_NAME
 const API_BASE = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api'
+  ? `https://${codespaceName}-8000.app.github.dev`
+  : 'http://localhost:8000'
 
 export default function Leaderboard() {
   const [entries, setEntries] = useState([])
@@ -11,7 +11,7 @@ export default function Leaderboard() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(`${API_BASE}/leaderboard/`)
+    fetch(`${API_BASE}/api/leaderboard/`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()
